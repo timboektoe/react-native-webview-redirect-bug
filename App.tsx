@@ -22,28 +22,36 @@ export default class App extends React.Component<{}, AppState> {
     public render(): JSX.Element {
         const userAgent = Platform.OS === 'ios' ? IOS_USER_AGENT : ANDROID_USER_AGENT;
 
-        if (Platform.OS === 'ios') {
-            return (
-                <View style={styles.container}>
-                    <WebView
-                        userAgent={userAgent}
-                        style={{ flex: 1 }}
-                        source={this.state.source}
-                    />
-                </View>
-            );
-        } else if (Platform.OS === 'android') {
-            return (
-                <View style={styles.container}>
-                    <WebView
-                        userAgent={userAgent}
-                        style={{ flex: 1 }}
-                        source={this.state.source}
-                        onShouldStartLoadWithRequest={this._handleOnShouldStartLoadWithRequestAndroid}
-                    />
-                </View>
-            );
-        }
+        // if (Platform.OS === 'ios') {
+        //     return (
+        //         <View style={styles.container}>
+        //             <WebView
+        //                 userAgent={userAgent}
+        //                 style={{ flex: 1 }}
+        //                 source={this.state.source}
+        //             />
+        //         </View>
+        //     );
+        // } else if (Platform.OS === 'android') {
+        //     return (
+        //         <View style={styles.container}>
+        //             <WebView
+        //                 userAgent={userAgent}
+        //                 style={{ flex: 1 }}
+        //                 source={this.state.source}
+        //                 onShouldStartLoadWithRequest={this._handleOnShouldStartLoadWithRequestAndroid}
+        //             />
+        //         </View>
+        //     );
+        // }
+        
+        return (<View style={styles['container']}>
+            <WebView
+                userAgent={userAgent}
+                style={{ flex: 1 }}
+                source={this.state.source}
+            />
+        </View>)
     }
 
     private _handleOnShouldStartLoadWithRequestAndroid = (event: WebViewNavigation) => {
