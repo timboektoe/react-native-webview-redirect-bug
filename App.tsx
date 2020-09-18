@@ -21,29 +21,6 @@ export default class App extends React.Component<{}, AppState> {
 
     public render(): JSX.Element {
         const userAgent = Platform.OS === 'ios' ? IOS_USER_AGENT : ANDROID_USER_AGENT;
-
-        // if (Platform.OS === 'ios') {
-        //     return (
-        //         <View style={styles.container}>
-        //             <WebView
-        //                 userAgent={userAgent}
-        //                 style={{ flex: 1 }}
-        //                 source={this.state.source}
-        //             />
-        //         </View>
-        //     );
-        // } else if (Platform.OS === 'android') {
-        //     return (
-        //         <View style={styles.container}>
-        //             <WebView
-        //                 userAgent={userAgent}
-        //                 style={{ flex: 1 }}
-        //                 source={this.state.source}
-        //                 onShouldStartLoadWithRequest={this._handleOnShouldStartLoadWithRequestAndroid}
-        //             />
-        //         </View>
-        //     );
-        // }
         
         return (<View style={styles['container']}>
             <WebView
@@ -52,26 +29,6 @@ export default class App extends React.Component<{}, AppState> {
                 source={this.state.source}
             />
         </View>)
-    }
-
-    private _handleOnShouldStartLoadWithRequestAndroid = (event: WebViewNavigation) => {
-        const { url: newURL } = event;
-
-        if (newURL !== (this.state.source as WebViewSourceUri).uri) {
-            console.log(`Set state -  uri: ${newURL}, referer: ${(this.state.source as WebViewSourceUri).uri}`);
-            const refererer = !/login$/gi.test(newURL) ? (this.state.source as WebViewSourceUri).uri : 'https://www.uwv.nl/particulieren/mijnuwv/index.aspx';
-
-            this.setState({
-                source: {
-                    uri: newURL,
-                    headers: {
-                        Referer: refererer
-                    }
-                }
-            })
-        }
-
-        return false;
     }
 }
 
