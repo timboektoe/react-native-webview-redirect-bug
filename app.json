@@ -3,7 +3,6 @@
     "name": "Blank Template (TypeScript)",
     "slug": "react-native-webview-redirect-bug",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
