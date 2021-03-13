@@ -84,7 +84,7 @@ export default class App extends React.Component<{}, AppState> {
 
                 this.setState({
                         uri: 'https://yippeeclip.nl/headers',
-                        // uri: 'https://mijn.uwv.nl/iam/login'
+                        //uri: 'https://mijn.uwv.nl/iam/login'
                 });
 
                 return false;
